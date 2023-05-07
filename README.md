@@ -31,3 +31,5 @@ $ rails server
 ```
 
 You can now access the application at [http://localhost:3000/](http://localhost:3000/)
+
+You can also view the DelayedJob queues and jobs at [http://localhost:3000/delayed_jobs/overview](http://localhost:3000/delayed_jobs/overview)
