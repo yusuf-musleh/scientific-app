@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a basic Ruby on Rails project that serves a simple frontend that allows you to enqueue various scientific jobs.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+Make sure you have the latest `Ruby` and `Ruby on Rails` installed.
 
-* System dependencies
+After cloning the project, navigate to the root directory of the project and run the following command to install all the required dependencies:
 
-* Configuration
+```sh
+$ bundle install
+```
 
-* Database creation
+Next, create the database by running:
 
-* Database initialization
+```sh
+$ rails db:create
+```
 
-* How to run the test suite
+Migrate the database schema by running:
 
-* Services (job queues, cache servers, search engines, etc.)
+```sh
+$ rails db:migrate
+```
 
-* Deployment instructions
+Start the server:
 
-* ...
+```sh
+$ rails server
+```
+
+You can now access the application at [http://localhost:3000/](http://localhost:3000/)
