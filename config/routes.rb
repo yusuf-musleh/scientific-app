@@ -1,6 +1,10 @@
-Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+require 'delayed_job_web'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+Rails.application.routes.draw do
+  root "scientific_app#index"
+
+  post "/jobs", to: "jobs#create"
+
+  # Delay Jobs Dashboard
+  mount DelayedJobWeb => '/delayed_jobs'
 end

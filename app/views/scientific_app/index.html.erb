@@ -1,0 +1,53 @@
+<head>
+  <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
+</head>
+
+<body>
+    <%= yield %>
+    <div class="container">
+      <h1>Scientific Application</h1>
+      <p>Click on the buttons below to invoke various scientific jobs:</p>
+
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <button id="job-1" data-simple=true class="invoke-job-btn btn btn-primary btn-block mb-3">Simple Job</button>
+            <button id="job-2" data-simple=false class="invoke-job-btn btn btn-primary btn-block">Long Running Job</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</body>
+
+<script src="/assets/rails-ujs.js" defer="defer"></script>
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+    let buttons = document.getElementsByClassName('invoke-job-btn');
+
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener('click', function(event) {
+        let jobId = event.target.id.split("-")[1]
+        let simple = event.target.dataset.simple == 'true'
+        fetch('/jobs', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': Rails.csrfToken()
+          },
+          body: JSON.stringify({
+            id: jobId,
+            simple: simple
+          })
+        }).then(function(response) {
+          console.log('Server response: ' + response.status);
+        });
+
+      });
+    }
+
+  });
+
+</script>

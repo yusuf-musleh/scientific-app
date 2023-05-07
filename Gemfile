@@ -45,6 +45,10 @@ gem "bootsnap", require: false
 # Use Postgres as the Database
 gem 'pg'
 
+# Use delayed_job gem for Asynchronous jobs
+gem 'delayed_job_active_record'
+gem 'delayed_job_web'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
